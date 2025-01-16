@@ -799,15 +799,9 @@ def graphical_assistant():
 def console_assistant():
     """Launches the text-based interface"""
 
-    print """
-    ________________________________________________________________
-
-    Welcome to the installation assistant!
-    I will guide you through the setup and installation of Google
-    credentials
-    ________________________________________________________________
-
-    """
+    print("Welcome to the installation assistant! \n
+    I will guide you through the setup and installation of Google \n
+    credentials.")
     install_dir = os.path.split(os.path.abspath(__file__))[0]
 
 
@@ -862,33 +856,29 @@ def console_assistant():
         if os.path.exists(app_id):
             print("\n** found %s application file, will use it (remove in case of problems)"%constants.APP_ID_FILE)
         else:
-            print """
-    ________________________________________________________________
+            print("Photo upload or email sending requires that you create a \n
+            Google Project and download the project's credentials to \n
+            the scripts/ directory. \n
+            \n
+            Note: you can do the following on any computer (except step 5/) \n
+            \n
+            Here's a step by step guide: \n
+            1/  Go to https://console.developers.google.com/start/api?id=gmail \n
+            2/  Select `Create a project` and click continue \n
+            3/  Follow the assistant with these hints: \n
+                - Platform : other (with command-line user interface) \n
+                - Access   : User data \n
+                - Fill whatever your like for application name and ID name \n
+            4/  The last step of the assistant makes you Download \n
+                a client_id.json file : this is your project's credentials! \n
+            5/  Copy the downloaded file to : \n
+            %s \n\n
 
-    Photo upload or email sending requires that you create a
-    Google Project and download the project's credentials to
-    the scripts/ directory
-
-    Note: you can do the following on any computer (except step 5/)
-    ________________________________________________________________
-
-    Here's a step by step guide:
-    1/  Go to https://console.developers.google.com/start/api?id=gmail
-    2/  Select "Create a project" and click continue
-    3/  Follow the assistant with these hints:
-        - Platform : other (with command-line user interface)
-        - Access   : User data
-        - Fill whatever your like for application name and ID name
-    4/  The last step of the assistant makes you Download
-        a client_id.json file : this is your project's credentials!
-    5/  Copy the downloaded file to :
-        %s
-
-    The following page has up-to-date informations for this procedure:
-    https://support.google.com/googleapi/answer/6158849
-
-    The installation program will now exit.
-    Run it again once this is done
+            The following page has up-to-date informations for this procedure: \n
+            https://support.google.com/googleapi/answer/6158849 \n
+            \n
+            The installation program will now exit. \n
+            Run it again once this is done")
     """%(app_id)
             sys.exit()
 
