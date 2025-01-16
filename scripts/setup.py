@@ -384,7 +384,7 @@ class Assistant(Tk):
             def change_dir():
                 directory = tkFileDialog.askdirectory(initialdir=self.archive_dir_var.get(), title="Choose directory for snapshots archive")
                 self.archive_dir_var.set(directory)
-                print "changed dir to %s"%directory
+                print("changed dir to %s"%directory)
 
             self.choose_archive_dir_button = Button(self.main_frame, text="Choose directory", fg='white',bg=self.BUTTONS_BG, font='Helvetica', command=change_dir)
 
