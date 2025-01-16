@@ -799,9 +799,7 @@ def graphical_assistant():
 def console_assistant():
     """Launches the text-based interface"""
 
-    print("Welcome to the installation assistant! \n
-    I will guide you through the setup and installation of Google \n
-    credentials.")
+    print("Welcome to the installation assistant! I will guide you through the setup and installation of Google credentials.")
     install_dir = os.path.split(os.path.abspath(__file__))[0]
 
 
@@ -856,30 +854,27 @@ def console_assistant():
         if os.path.exists(app_id):
             print("\n** found %s application file, will use it (remove in case of problems)"%constants.APP_ID_FILE)
         else:
-            print("Photo upload or email sending requires that you create a \n
-            Google Project and download the project's credentials to \n
-            the scripts/ directory. \n
-            \n
-            Note: you can do the following on any computer (except step 5/) \n
-            \n
-            Here's a step by step guide: \n
-            1/  Go to https://console.developers.google.com/start/api?id=gmail \n
-            2/  Select `Create a project` and click continue \n
-            3/  Follow the assistant with these hints: \n
-                - Platform : other (with command-line user interface) \n
-                - Access   : User data \n
-                - Fill whatever your like for application name and ID name \n
-            4/  The last step of the assistant makes you Download \n
-                a client_id.json file : this is your project's credentials! \n
-            5/  Copy the downloaded file to : \n
-            %s \n\n
+            print("Photo upload or email sending requires that you create a Google Project and download the project's credentials to the scripts/ directory.") 
+            
+            print("Note: you can do the following on any computer (except step 5/) ")
+            
+            print("Here's a step by step guide: ")
+            print("1/  Go to https://console.developers.google.com/start/api?id=gmail ")
+            print("2/  Select `Create a project` and click continue ")
+            print("3/  Follow the assistant with these hints: ")
+            print("    - Platform : other (with command-line user interface) ")
+            print("    - Access   : User data ")
+            print("    - Fill whatever your like for application name and ID name ")
+            print("4/  The last step of the assistant makes you Download ")
+            print("    a client_id.json file : this is your project's credentials! ")
+            print("5/  Copy the downloaded file to : %s ")
 
-            The following page has up-to-date informations for this procedure: \n
-            https://support.google.com/googleapi/answer/6158849 \n
-            \n
-            The installation program will now exit. \n
-            Run it again once this is done")
-    """%(app_id)
+            print("The following page has up-to-date informations for this procedure: ")
+            print("https://support.google.com/googleapi/answer/6158849 ")
+            
+            print("The installation program will now exit.") 
+            print("Run it again once this is done"%(app_id))
+#            %(app_id)
             sys.exit()
 
         # We do have the client_id !
@@ -901,14 +896,7 @@ def console_assistant():
         import webbrowser
         def auth_callback(authorization_uri):
             print("\n%s file is missing or invalid"%cred_store)
-            print """
-    _________________________________________________________________
-
-    You must authorize this application to access your data
-    I will now open a web browser to complete the validation process
-    Once this is done, you will get a validation key that you must
-    paste below
-    _________________________________________________________________"""
+            print("You must authorize this application to access your data. I will now open a web browser to complete the validation process. Once this is done, you will get a validation key that you must paste below")
             raw_input("Press a key when ready...")
             webbrowser.open(authorization_uri)
             mycode = raw_input('\n[validation code]: ').strip()
@@ -922,7 +910,7 @@ def console_assistant():
             connected = service.refresh() # will call 'auth_callback' if needed
             print("... Done")
         except Exception as error:
-            print(error)
+            print("error")
             print("\n==> Connection failed :(")
             sys.exit()
 
@@ -977,7 +965,7 @@ def console_assistant():
                         album_id = candidates_id[int(album_num)]
                         break
                     except:
-                        print "Bad album number!"
+                        print("Bad album number!")
                 if album_id == "":
                     config.albumID = None
                 elif album_id == "<New>":
@@ -1017,20 +1005,16 @@ def console_assistant():
     st = os.stat(script_name)
     os.chmod(script_name, st.st_mode | stat.S_IEXEC)
 
-    print """
-
-    ________________________________________________________________
-
-    We're all set, I just created a script to launch TouchSelfie with
-    your options, you will find it here :
-    => %s
-    You can tune configuration parameters in scripts/%s
-    You can adapt your hardware configuration in scripts/constants.py
-    """% (script_name, constants.CONFIGURATION_FILE)
+  
+    print("We're all set, I just created a script to launch TouchSelfie with")
+    print("your options, you will find it here :")
+    print("=> %s")
+    print("You can tune configuration parameters in scripts/%s")
+    print("You can adapt your hardware configuration in scripts/constants.py" %(script_name, constants.CONFIGURATION_FILE)) 
 
 
 def to_boolean(answer, default=True):
-    """Transforms a string to boolean"""
+    '''Transforms a string to boolean'''
     if answer == '':
         return default
     if answer == 'y' or answer == 'Y' or answer == 'yes' or answer == 'Yes':
